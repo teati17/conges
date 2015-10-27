@@ -1,0 +1,19 @@
+<table>
+	<caption>Tableau salaire et congés</caption>
+   	<tr>
+       	<th>Mois</th>
+       	<th>Salaire</th>
+       	<th>Congés payés</th>
+       	<th>Total</th>
+   	</tr>
+
+   	<% @conges.tab_mois_salaire.each do |mois_salaire| %>
+  	<tr>
+  		<td><%= mois_salaire.mois_label %></td>
+  		<td><%= mois_salaire.salaire %></td>
+  		<td><%= mois_salaire.conges_paye %></td>
+  		<td><%= mois_salaire.total %></td>
+  	</tr>
+	<% end %>
+
+</table>

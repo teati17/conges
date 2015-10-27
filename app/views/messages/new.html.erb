@@ -1,0 +1,42 @@
+<%= form_for @message do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= "#{pluralize(@message.errors.count, "error")} prohibited this message from being sent:" %>
+      </h2>
+
+      <ul>
+        <% @message.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      <ul>
+    </div>
+  <% end %>
+  
+  
+
+  <div class="field">
+  	<%= f.label :date_debut_contrat %>
+  	<%= f.text_field(:date_debut_contrat, class: 'datepicker') %>
+  </div>
+
+  <%= label_tag(:check_fin_contrat, "Est-ce la fin du contrat ? ") %>
+  <%= check_box_tag 'check_fin_contrat' %>
+
+  <div class="field" id="fin_contrat">
+	  <div class="field">
+	  	<%= f.label :date_fin_contrat %>
+	  	<%= f.text_field(:date_fin_contrat, class: 'datepicker') %>
+	  </div>
+  </div>
+
+  <div class="field">
+  <%= label_tag(:mode_paiement,"Mode de paiement") %>
+	<%= select_tag "mode_paiement", options_for_select( [[ "Fin de la période d'acquisition","1"], ["Au 1/12ème","2"], ["Par anticipation","3"] ])%>
+ </div>
+
+  <div class="actions">
+    <%= f.submit 'Send', class: 'button' %>
+  </div>
+
+<% end %>
